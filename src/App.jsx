@@ -45,17 +45,16 @@ const App = () => {
   console.log(input);
   return (
     <div className="App">
-      <h1>TreePersona</h1>
+      <h1 className="heading">
+        <b>What is your TreePersona?</b>
+      </h1>
       {Object.values(current).length === 0 ? (
         <div className="layout">
           <SurveyComponent onSurveyComplete={handleSurveyComplete} />
         </div>
       ) : (
-        <p>cool</p>
+        <Translation doStuff={doStuff} result={result} />
       )}
-
-      <Translation doStuff={doStuff} result={result} />
-      {console.log(result)}
     </div>
   );
 };
