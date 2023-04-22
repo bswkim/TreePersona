@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "./index.css";
+import "survey-core/modern.min.css";
 import { json } from "./json.js";
+import { StylesManager } from "survey-core";
 
 function SurveyComponent(props) {
   const survey = new Model(json);
+
+  StylesManager.applyTheme("darkrose");
   const [current, setCurrent] = useState({});
   survey.onComplete.add((sender, options) => {
     const surveyAns = JSON.stringify(sender.data, null, 3);
@@ -49,7 +53,7 @@ function SurveyComponent(props) {
   });
 
   return (
-    <div>
+    <div className="surveysurvey">
       <Survey model={survey} />
     </div>
   );

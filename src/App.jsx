@@ -39,7 +39,9 @@ const App = (props) => {
 
   return (
     <div className="App">
-      <SurveyComponent onSurveyComplete={handleSurveyComplete} />
+      <div className="layout">
+        <SurveyComponent onSurveyComplete={handleSurveyComplete} />
+      </div>
       <div>
         {/* <pre>{JSON.parse(ans)}</pre> */}
         <pre>{current.question1}</pre>
