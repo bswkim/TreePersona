@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "./index.css";
 import { json } from "./json.js";
 
-function SurveyComponent() {
+function SurveyComponent(props) {
   const survey = new Model(json);
+  const [current, setCurrent] = useState({});
   survey.onComplete.add((sender, options) => {
-    const results = JSON.stringify(sender.data, null, 3);
+    const surveyAns = JSON.stringify(sender.data, null, 3);
+    setCurrent(surveyAns);
+    props.onSurveyComplete(surveyAns); // Pass surveyAns up to parent component
   });
 
   survey.onAfterRenderQuestion.add(function (survey, options) {
@@ -44,7 +47,12 @@ function SurveyComponent() {
     if (!header || !!header.querySelector(".dialogBox-btn")) return;
     header.appendChild(btn);
   });
-  return <Survey model={survey} />;
+
+  return (
+    <div>
+      <Survey model={survey} />
+    </div>
+  );
 }
 
 export default SurveyComponent;

@@ -4,8 +4,9 @@ import OptionSelection from "./components/OptionSelection";
 import Translation from "./components/Translation";
 import { arrayItems } from "./AIOptions";
 import { useState } from "react";
+import SurveyComponent from "./survey";
 
-function App() {
+const App = (props) => {
   const configuration = new Configuration({
     apiKey: import.meta.env.VITE_Open_AI_Key,
   });
@@ -13,7 +14,17 @@ function App() {
   const [option, setOption] = useState({});
   const [result, setResult] = useState("");
   const [input, setInput] = useState("");
-  // console.log(import.meta.env.VITE_Open_AI_Key);
+  const [current, setCurrent] = useState({});
+  const ans = JSON.stringify(current, null, 3);
+  const reallyAns = JSON.parse(ans);
+
+  const handleSurveyComplete = (surveyAns) => {
+    surveyAns = JSON.parse(surveyAns);
+    console.log(surveyAns);
+    console.log(surveyAns["question1"]);
+    setCurrent(JSON.parse(JSON.stringify(surveyAns)));
+    console.log(current);
+  };
   const selectOption = (option) => {
     setOption(option);
   };
@@ -28,6 +39,12 @@ function App() {
 
   return (
     <div className="App">
+      <SurveyComponent onSurveyComplete={handleSurveyComplete} />
+      <div>
+        {/* <pre>{JSON.parse(ans)}</pre> */}
+        <pre>{current.question1}</pre>
+      </div>
+
       {Object.values(option).length === 0 ? (
         <OptionSelection arrayItems={arrayItems} selectOption={selectOption} />
       ) : (
@@ -35,6 +52,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
