@@ -1,13 +1,22 @@
 import React from "react";
 
-export default function Translation({ doStuff, result }) {
+export default function Translation({
+  doStuff,
+  handleButtonClick,
+  generateImage,
+  result,
+}) {
+  const handleBothClicks = () => {
+    doStuff();
+    handleButtonClick();
+    generateImage();
+  };
+
   return (
     <div>
-      <button className="action-btn" onClick={doStuff}>
+      <button className="action-btn" onClick={handleBothClicks}>
         Show Results
       </button>
-
-      <h3 className="result-text">{result.length > 0 ? result : ""}</h3>
     </div>
   );
 }

@@ -38,3 +38,11 @@
   background: #ffffff;
   box-shadow: 14px 14px 46px #e0e0e0, -14px -14px 46px #ffffff;
 }
+
+.result-image {
+  margin-top: 20px;
+  width: 350px;
+  border: 5px solid transparent;
+  border-image: url(border.png) 30% round;
+  border-color: #629460;
+}
