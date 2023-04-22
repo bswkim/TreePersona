@@ -4,6 +4,7 @@ import Translation from "./components/Translation";
 import { arrayItems } from "./AIOptions";
 import { useState } from "react";
 import SurveyComponent from "./survey";
+import OnboardingScreen from "./Onboarding";
 
 const App = () => {
   const configuration = new Configuration({
@@ -45,6 +46,7 @@ const App = () => {
   console.log(input);
   return (
     <div className="App">
+      <OnboardingScreen />
       <h1>TreePersona</h1>
       {Object.values(current).length === 0 ? (
         <div className="layout">
