@@ -6,11 +6,10 @@ export const json = {
       name: "page1",
       elements: [
         {
-          type: "radiogroup",
+          type: "text",
           name: "question1",
           title: "What is your favorite color?",
           isRequired: true,
-          choices: ["Black", "White", "Red", "Blue", "Green", "Yellow"],
         },
       ],
       title: "Color",
@@ -19,22 +18,10 @@ export const json = {
       name: "page2",
       elements: [
         {
-          type: "radiogroup",
+          type: "text",
           name: "question2",
           title: "What is your favorite music genre?",
           isRequired: true,
-          choices: [
-            "Hip-hop",
-            "Ballad",
-            "Classical",
-            "EDM",
-            "Jazz",
-            "R&B",
-            {
-              value: "Pop ",
-              text: "Pop",
-            },
-          ],
         },
       ],
       title: "Music",
@@ -75,11 +62,10 @@ export const json = {
       name: "page5",
       elements: [
         {
-          type: "radiogroup",
+          type: "text",
           name: "question6",
           title: "What is your favorite season? ",
           isRequired: true,
-          choices: ["Spring", "Summer", "Fall", "Winter"],
         },
       ],
       title: "Season",
